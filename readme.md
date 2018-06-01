@@ -1,11 +1,103 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## About Api Blog System
+
+Api Blog System is a simple laravel RESTFul api system that contain authentication system (Login & Registration), Articles, Comments. The system handle all different requests. You can use the system online by this route http://ma7moudsalem.com/websites/blog .  
+
+## Online Route System
+
+1. http://ma7moudsalem.com/websites/blog/api/register
+Method: POST
+Auth: NO
+This route recieve 
+    Name     => String 
+    E-mail   => Email 
+    Password => String 
+If the process success return (User Token)
+
+2. http://ma7moudsalem.com/websites/blog/api/login
+Method: POST
+Auth: NO
+This route recieve :
+    E-mail   => Email 
+    Password => String
+If the process success return (User Token)
+
+3. http://ma7moudsalem.com/websites/blog/api/articles
+Method: GET
+Auth: No
+This route recieve no data : 
+Return paginate articles data (10 per page)
+
+4. http://ma7moudsalem.com/websites/blog/articles/{id}
+Method: GET
+Auth: No
+This route recieve no data : 
+Return single active ( status = 1 ) article
+
+5. http://ma7moudsalem.com/websites/blog/api/articles
+Method: POST
+Auth: Yes
+This route recieve : 
+Title => String 
+Content => Text 
+* User Id will set by user login 
+If the process success return this added data article
+
+6. http://ma7moudsalem.com/websites/blog/articles/{id}
+Method: PUT
+Auth: Yes
+This route recieve : 
+Title => String 
+Content => Text 
+* Non of this data is required 
+* Only creator this article can update this article 
+If the process success return this data article
+
+7. http://ma7moudsalem.com/websites/blog/articles/{id}
+Method: DELETE
+Auth: Yes
+This route recieve no data : 
+* Only creator this article can delete this article 
+If the process success return null response
+
+8. http://ma7moudsalem.com/websites/blog/article-id/comments
+Method: GET
+Auth: No
+This route recieve no data : 
+Return paginate data (10 per page)
+
+9. http://ma7moudsalem.com/websites/blog/article-id/comments/{id}
+Method: GET
+Auth: No
+This route recieve no data :
+* Article must be active (status = 1)
+Return single comment 
+
+10. http://ma7moudsalem.com/websites/blog/article-id/comments
+Method: POST
+Auth: Yes
+This route recieve : 
+Comment => Text 
+* Article must be active (status = 1)
+Return new single comment data
+
+11. http://ma7moudsalem.com/websites/blog/article-id/comments/{id}
+Mehod: PUT
+Auth: Yes
+This route recieve :
+Comment => Text
+* Article must be active (status = 1)
+* Only comment creator can be update the comment
+Return updated single comment data
+
+12. http://ma7moudsalem.com/websites/blog/article-id/comments/{id}
+Method: DELETE
+Auth: Yes
+This route recieve no data :
+* Article must be active (status = 1)
+* Only comment creator can be delete the comment
+Return null
 
 ## About Laravel
 
@@ -20,39 +112,3 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
-
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
